@@ -8,6 +8,13 @@
 
 #import "AppDelegate.h"
 
+// set Lumberjack Logger log level
+#ifdef DEBUG
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+#else
+static const DDLogLevel ddLogLevel = DDLogLevelWarn;
+#endif
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +24,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Initialize logging subsystem
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    DDLogInfo(@"-=] Welcome to TemblorTrack [=-");
+    
+    // MagicalRecord for Core Data
+    DDLogVerbose(@"MagicalRecord: setting up auto-migrating Core Data stack ...");
+    [MagicalRecord setupAutoMigratingCoreDataStack];
+    DDLogVerbose(@"MagicalRecord: auto-migrating Core Data stack setup complete.");
+    
     return YES;
 }
 
@@ -42,6 +61,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
+    
+    // MagicalRecord for Core Data
+    [MagicalRecord cleanUp];
 }
 
 #pragma mark - Core Data stack
@@ -86,7 +108,7 @@
         error = [NSError errorWithDomain:@"YOUR_ERROR_DOMAIN" code:9999 userInfo:dict];
         // Replace this with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        DDLogError(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
     
@@ -118,7 +140,7 @@
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            DDLogError(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
     }

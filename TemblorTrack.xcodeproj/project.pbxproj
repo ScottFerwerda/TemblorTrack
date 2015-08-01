@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24108CD71B6D0BD5003DE701 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24108CD61B6D0BD5003DE701 /* MapKit.framework */; };
 		24DC8FF31B6853B200EF9F10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FF21B6853B200EF9F10 /* main.m */; };
 		24DC8FF61B6853B200EF9F10 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FF51B6853B200EF9F10 /* AppDelegate.m */; };
 		24DC8FF91B6853B200EF9F10 /* TemblorTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FF71B6853B200EF9F10 /* TemblorTrack.xcdatamodeld */; };
-		24DC8FFC1B6853B200EF9F10 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FFB1B6853B200EF9F10 /* ViewController.m */; };
+		24DC8FFC1B6853B200EF9F10 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FFB1B6853B200EF9F10 /* MainViewController.m */; };
 		24DC8FFF1B6853B200EF9F10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24DC8FFD1B6853B200EF9F10 /* Main.storyboard */; };
 		24DC90011B6853B200EF9F10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DC90001B6853B200EF9F10 /* Images.xcassets */; };
 		24DC90041B6853B200EF9F10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24DC90021B6853B200EF9F10 /* LaunchScreen.xib */; };
 		24DC90101B6853B200EF9F10 /* TemblorTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC900F1B6853B200EF9F10 /* TemblorTrackTests.m */; };
+		B9F50D58B3A8B97F33236988 /* libPods-TemblorTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B03D20B5463362593C5811 /* libPods-TemblorTrack.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,20 +30,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24108CD41B6D05DA003DE701 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		24108CD51B6D066D003DE701 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		24108CD61B6D0BD5003DE701 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		24DC8FED1B6853B200EF9F10 /* TemblorTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemblorTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DC8FF11B6853B200EF9F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24DC8FF21B6853B200EF9F10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24DC8FF41B6853B200EF9F10 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		24DC8FF51B6853B200EF9F10 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		24DC8FF81B6853B200EF9F10 /* TemblorTrack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TemblorTrack.xcdatamodel; sourceTree = "<group>"; };
-		24DC8FFA1B6853B200EF9F10 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		24DC8FFB1B6853B200EF9F10 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		24DC8FFA1B6853B200EF9F10 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		24DC8FFB1B6853B200EF9F10 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		24DC8FFE1B6853B200EF9F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24DC90001B6853B200EF9F10 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		24DC90031B6853B200EF9F10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		24DC90091B6853B200EF9F10 /* TemblorTrackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemblorTrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DC900E1B6853B200EF9F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24DC900F1B6853B200EF9F10 /* TemblorTrackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemblorTrackTests.m; sourceTree = "<group>"; };
+		4B79523B32D6E6267E88007D /* Pods-TemblorTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack.release.xcconfig"; sourceTree = "<group>"; };
+		A6B03D20B5463362593C5811 /* libPods-TemblorTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TemblorTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2408126B02BB2E29325CFFD /* Pods-TemblorTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24108CD71B6D0BD5003DE701 /* MapKit.framework in Frameworks */,
+				B9F50D58B3A8B97F33236988 /* libPods-TemblorTrack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,12 +72,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14E4D2839C61FD589FCB97F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2408126B02BB2E29325CFFD /* Pods-TemblorTrack.debug.xcconfig */,
+				4B79523B32D6E6267E88007D /* Pods-TemblorTrack.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		24DC8FE41B6853B200EF9F10 = {
 			isa = PBXGroup;
 			children = (
 				24DC8FEF1B6853B200EF9F10 /* TemblorTrack */,
 				24DC900C1B6853B200EF9F10 /* TemblorTrackTests */,
 				24DC8FEE1B6853B200EF9F10 /* Products */,
+				14E4D2839C61FD589FCB97F2 /* Pods */,
+				323FE1BE9DEDC5B1D7ED6D07 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,10 +104,11 @@
 		24DC8FEF1B6853B200EF9F10 /* TemblorTrack */ = {
 			isa = PBXGroup;
 			children = (
+				24108CD51B6D066D003DE701 /* PrefixHeader.pch */,
 				24DC8FF41B6853B200EF9F10 /* AppDelegate.h */,
 				24DC8FF51B6853B200EF9F10 /* AppDelegate.m */,
-				24DC8FFA1B6853B200EF9F10 /* ViewController.h */,
-				24DC8FFB1B6853B200EF9F10 /* ViewController.m */,
+				24DC8FFA1B6853B200EF9F10 /* MainViewController.h */,
+				24DC8FFB1B6853B200EF9F10 /* MainViewController.m */,
 				24DC8FFD1B6853B200EF9F10 /* Main.storyboard */,
 				24DC90001B6853B200EF9F10 /* Images.xcassets */,
 				24DC90021B6853B200EF9F10 /* LaunchScreen.xib */,
@@ -99,6 +121,7 @@
 		24DC8FF01B6853B200EF9F10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24108CD41B6D05DA003DE701 /* README.md */,
 				24DC8FF11B6853B200EF9F10 /* Info.plist */,
 				24DC8FF21B6853B200EF9F10 /* main.m */,
 			);
@@ -122,6 +145,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		323FE1BE9DEDC5B1D7ED6D07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24108CD61B6D0BD5003DE701 /* MapKit.framework */,
+				A6B03D20B5463362593C5811 /* libPods-TemblorTrack.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +161,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24DC90131B6853B200EF9F10 /* Build configuration list for PBXNativeTarget "TemblorTrack" */;
 			buildPhases = (
+				6947871E63AFA9D97F87C5E2 /* Check Pods Manifest.lock */,
 				24DC8FE91B6853B200EF9F10 /* Sources */,
 				24DC8FEA1B6853B200EF9F10 /* Frameworks */,
 				24DC8FEB1B6853B200EF9F10 /* Resources */,
+				96CF97AA5ACC2734214A6837 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +251,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6947871E63AFA9D97F87C5E2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		96CF97AA5ACC2734214A6837 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		24DC8FE91B6853B200EF9F10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -224,7 +291,7 @@
 			files = (
 				24DC8FF61B6853B200EF9F10 /* AppDelegate.m in Sources */,
 				24DC8FF91B6853B200EF9F10 /* TemblorTrack.xcdatamodeld in Sources */,
-				24DC8FFC1B6853B200EF9F10 /* ViewController.m in Sources */,
+				24DC8FFC1B6853B200EF9F10 /* MainViewController.m in Sources */,
 				24DC8FF31B6853B200EF9F10 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,8 +418,10 @@
 		};
 		24DC90141B6853B200EF9F10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2408126B02BB2E29325CFFD /* Pods-TemblorTrack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = TemblorTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,8 +430,10 @@
 		};
 		24DC90151B6853B200EF9F10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B79523B32D6E6267E88007D /* Pods-TemblorTrack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = TemblorTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -422,6 +493,7 @@
 				24DC90151B6853B200EF9F10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		24DC90161B6853B200EF9F10 /* Build configuration list for PBXNativeTarget "TemblorTrackTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +502,7 @@
 				24DC90181B6853B200EF9F10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
