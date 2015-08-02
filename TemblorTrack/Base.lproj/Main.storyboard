@@ -16,11 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OkF-1g-v92">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="OkF-1g-v92">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OkF-1g-v92" secondAttribute="trailing" id="Jy2-a6-zy6"/>
+                            <constraint firstItem="OkF-1g-v92" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OBo-qI-6QE"/>
+                            <constraint firstItem="OkF-1g-v92" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qHB-tp-5S6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OkF-1g-v92" secondAttribute="bottom" id="v4w-XE-ffw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="theMap" destination="OkF-1g-v92" id="szN-ba-6Cs"/>

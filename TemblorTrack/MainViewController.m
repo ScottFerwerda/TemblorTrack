@@ -6,10 +6,17 @@
 //  Copyright (c) 2015 Scott Ferwerda. All rights reserved.
 //
 
-#import "MainViewController.h"
 #import <MapKit/MapKit.h>
+#import "MainViewController.h"
+#import "QuakeDataManager.h"
 
 @interface MainViewController ()
+{
+    QuakeDataManager *quakeManager;
+    
+    BOOL mapInitialized;
+    USGSRect currentMapRect;
+}
 
 @property (weak, nonatomic) IBOutlet MKMapView *theMap;
 
@@ -20,6 +27,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    quakeManager = [[QuakeDataManager alloc] init];
+    // zoom extents
+    currentMapRect = [quakeManager initialRect];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (mapInitialized == NO) {
+        double w = currentMapRect.maxLongitude - currentMapRect.minLongitude;
+        double h = currentMapRect.maxLatitude - currentMapRect.minLatitude;
+        double x0 = currentMapRect.minLongitude + (w / 2.0);
+        double y0 = currentMapRect.minLatitude + (h / 2.0);
+        CLLocationCoordinate2D centerCoord = CLLocationCoordinate2DMake(y0, x0);
+        MKCoordinateSpan mapSpan = MKCoordinateSpanMake(h, w);
+        MKCoordinateRegion mapRegion = MKCoordinateRegionMake(centerCoord, mapSpan);
+        [self.theMap setRegion:mapRegion animated:YES];
+        mapInitialized = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

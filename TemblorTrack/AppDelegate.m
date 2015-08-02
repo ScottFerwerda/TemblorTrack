@@ -8,13 +8,6 @@
 
 #import "AppDelegate.h"
 
-// set Lumberjack Logger log level
-#ifdef DEBUG
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
-#else
-static const DDLogLevel ddLogLevel = DDLogLevelWarn;
-#endif
-
 @interface AppDelegate ()
 
 @end
