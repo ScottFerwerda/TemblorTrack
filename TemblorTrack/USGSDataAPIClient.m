@@ -42,6 +42,7 @@ static NSString * const USGSDataAPIBaseURLString = @"http://ehp2-earthquake.wr.u
     if (endTime != nil) {
         params[@"endtime"] = [dateFormatter stringFromDate:endTime];
     }
+    params[@"orderby"] = @"time-asc";
     
     return [self GET:queryUrl parameters:params success:successBlock failure:failureBlock];
 }
