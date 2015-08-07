@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuakeDataManager.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController <QuakeDataManagerDelegate>
 
 
 @end

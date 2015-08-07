@@ -8,7 +8,6 @@
 
 #import <MapKit/MapKit.h>
 #import "MainViewController.h"
-#import "QuakeDataManager.h"
 
 @interface MainViewController ()
 {
@@ -27,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    quakeManager = [[QuakeDataManager alloc] init];
+    quakeManager = [[QuakeDataManager alloc] initWithDelegate:self];
     // zoom extents
     currentMapRect = [quakeManager initialRect];
 }
@@ -55,6 +54,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)quakeDataManager:(QuakeDataManager *)quakeDataManager dataUpdated:(NSArray *)quakeData {
+    DDLogDebug(@"");
 }
 
 @end

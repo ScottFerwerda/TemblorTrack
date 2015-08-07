@@ -31,6 +31,7 @@ static NSString * const USGSDataAPIBaseURLString = @"http://ehp2-earthquake.wr.u
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     params[@"format"] = @"geojson";
     params[@"eventtype"] = @"earthquake";
+    params[@"minmagnitude"] = @(2.5);
     params[@"minlatitude"] = @(rect.minLatitude);
     params[@"minlongitude"] = @(rect.minLongitude);
     params[@"maxlatitude"] = @(rect.maxLatitude);
