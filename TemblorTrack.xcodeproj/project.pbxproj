@@ -11,6 +11,8 @@
 		24108CDA1B6D14B7003DE701 /* USGSDataAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 24108CD91B6D14B7003DE701 /* USGSDataAPIClient.m */; };
 		24108CDD1B6D5DB2003DE701 /* QuakeDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24108CDC1B6D5DB2003DE701 /* QuakeDataManager.m */; };
 		24B89A131B6E92A00017FC4D /* QuakeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B89A121B6E92A00017FC4D /* QuakeEvent.m */; };
+		24DB79C71B74ED82005AA8C6 /* QuakeDataOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DB79C61B74ED82005AA8C6 /* QuakeDataOverlay.m */; };
+		24DB79CA1B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DB79C91B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m */; };
 		24DC8FF31B6853B200EF9F10 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FF21B6853B200EF9F10 /* main.m */; };
 		24DC8FF61B6853B200EF9F10 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FF51B6853B200EF9F10 /* AppDelegate.m */; };
 		24DC8FF91B6853B200EF9F10 /* TemblorTrack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24DC8FF71B6853B200EF9F10 /* TemblorTrack.xcdatamodeld */; };
@@ -42,6 +44,10 @@
 		24108CDC1B6D5DB2003DE701 /* QuakeDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuakeDataManager.m; sourceTree = "<group>"; };
 		24B89A111B6E92A00017FC4D /* QuakeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuakeEvent.h; path = ../QuakeEvent.h; sourceTree = "<group>"; };
 		24B89A121B6E92A00017FC4D /* QuakeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuakeEvent.m; path = ../QuakeEvent.m; sourceTree = "<group>"; };
+		24DB79C51B74ED82005AA8C6 /* QuakeDataOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuakeDataOverlay.h; sourceTree = "<group>"; };
+		24DB79C61B74ED82005AA8C6 /* QuakeDataOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuakeDataOverlay.m; sourceTree = "<group>"; };
+		24DB79C81B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuakeDataOverlayRenderer.h; sourceTree = "<group>"; };
+		24DB79C91B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuakeDataOverlayRenderer.m; sourceTree = "<group>"; };
 		24DC8FED1B6853B200EF9F10 /* TemblorTrack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TemblorTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DC8FF11B6853B200EF9F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24DC8FF21B6853B200EF9F10 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -118,6 +124,10 @@
 				24DC8FF51B6853B200EF9F10 /* AppDelegate.m */,
 				24DC8FFA1B6853B200EF9F10 /* MainViewController.h */,
 				24DC8FFB1B6853B200EF9F10 /* MainViewController.m */,
+				24DB79C51B74ED82005AA8C6 /* QuakeDataOverlay.h */,
+				24DB79C61B74ED82005AA8C6 /* QuakeDataOverlay.m */,
+				24DB79C81B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.h */,
+				24DB79C91B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m */,
 				24DC8FFD1B6853B200EF9F10 /* Main.storyboard */,
 				24DC90001B6853B200EF9F10 /* Images.xcassets */,
 				24DC90021B6853B200EF9F10 /* LaunchScreen.xib */,
@@ -304,7 +314,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24DB79C71B74ED82005AA8C6 /* QuakeDataOverlay.m in Sources */,
 				24DC8FF61B6853B200EF9F10 /* AppDelegate.m in Sources */,
+				24DB79CA1B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m in Sources */,
 				24108CDD1B6D5DB2003DE701 /* QuakeDataManager.m in Sources */,
 				24DC8FF91B6853B200EF9F10 /* TemblorTrack.xcdatamodeld in Sources */,
 				24B89A131B6E92A00017FC4D /* QuakeEvent.m in Sources */,

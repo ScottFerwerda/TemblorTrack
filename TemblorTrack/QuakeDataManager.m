@@ -11,8 +11,10 @@
 @implementation QuakeDataItem
 
 - (NSString *)debugDescription {
-    return [NSString stringWithFormat:@"QuakeDataItem: date=%@, magnitude=%f, lat/long=(%f,%f), place=%@, USGSID=%@", self.dateStarted, self.magnitude, self.latitude, self.longitude, self.place, self.usgsId];
+    return [NSString stringWithFormat:@"QuakeDataItem: date=%@, magnitude=%f, lat/long=(%f,%f), place=%@, USGSID=%@", self.dateStarted, self.magnitude, self.coordinate.latitude, self.coordinate.longitude, self.place, self.usgsId];
 }
+
+#pragma mark - MKAnnotation
 
 @end
 
@@ -52,12 +54,12 @@
                 NSString *jsonGeomType = jsonGeometry[@"type"];
                 NSAssert([jsonGeomType isEqualToString:@"Point"], @"unexpected coordinate type in data");
                 NSArray *jsonCoord = jsonGeometry[@"coordinates"];
-//                double longitude = ((NSNumber *)(jsonCoord[0])).doubleValue;
-//                double latitude = ((NSNumber *)(jsonCoord[1])).doubleValue;
-                qdi.longitude = ((NSNumber *)(jsonCoord[0])).doubleValue;
-                qdi.latitude = ((NSNumber *)(jsonCoord[1])).doubleValue;
+//                qdi.longitude = ((NSNumber *)(jsonCoord[0])).doubleValue;
+//                qdi.latitude = ((NSNumber *)(jsonCoord[1])).doubleValue;
+                double longitude = ((NSNumber *)(jsonCoord[0])).doubleValue;
+                double latitude = ((NSNumber *)(jsonCoord[1])).doubleValue;
+                qdi.coordinate = CLLocationCoordinate2DMake(latitude, longitude);
                 NSDictionary *jsonProps = aJsonFeature[@"properties"];
-//                double magnitude = ((NSNumber *)(jsonProps[@"mag"])).doubleValue;
                 qdi.magnitude = ((NSNumber *)(jsonProps[@"mag"])).doubleValue;
 //                NSString *place = jsonProps[@"place"];
                 qdi.place = jsonProps[@"place"];
@@ -66,7 +68,7 @@
 //                NSDate *date = [NSDate dateWithTimeIntervalSince1970:(rawtime/1000)];
                 qdi.dateStarted = [NSDate dateWithTimeIntervalSince1970:(rawtime/1000)];
 //                DDLogDebug(@"%@: Magnitude %f quake at (%f, %f), %@ (ID: %@)", date, magnitude, longitude, latitude, place, usgsId);
-                DDLogDebug(@"%@: Magnitude %f quake at (%f, %f), %@ (ID: %@)", qdi.dateStarted, qdi.magnitude, qdi.latitude, qdi.longitude, qdi.place, qdi.usgsId);
+                DDLogDebug(@"%@: Magnitude %f quake at (%f, %f), %@ (ID: %@)", qdi.dateStarted, qdi.magnitude, qdi.coordinate.latitude, qdi.coordinate.longitude, qdi.place, qdi.usgsId);
                 [newQuakeDataItems addObject:qdi];
             }
             if (self.delegate != nil && [self.delegate respondsToSelector:@selector(quakeDataManager:dataUpdated:)]) {

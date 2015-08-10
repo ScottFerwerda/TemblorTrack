@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "QuakeDataManager.h"
 
-@interface MainViewController : UIViewController <QuakeDataManagerDelegate>
+@interface MainViewController : UIViewController <MKMapViewDelegate, QuakeDataManagerDelegate>
 
 
 @end
