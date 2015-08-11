@@ -37,5 +37,6 @@
 - (instancetype)initWithDelegate:(id<QuakeDataManagerDelegate>)delegateIn;
 - (USGSRect)initialRect;
 
+- (void)fetchQuakeDataFromServer;
 
 @end

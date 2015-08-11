@@ -82,7 +82,11 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="TemblorTrack" id="4aH-L4-Txf">
-                        <barButtonItem key="rightBarButtonItem" image="noun_8681" id="ZFE-gP-Ge7"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ZFE-gP-Ge7">
+                            <connections>
+                                <action selector="refreshTouched:" destination="BYZ-38-t0r" id="MHy-c1-qYY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="theMap" destination="OkF-1g-v92" id="szN-ba-6Cs"/>
@@ -111,6 +115,5 @@
     </scenes>
     <resources>
         <image name="ionicons_ios7_play" width="170" height="170"/>
-        <image name="noun_8681" width="22" height="22"/>
     </resources>
 </document>

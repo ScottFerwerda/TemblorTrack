@@ -20,11 +20,10 @@
     BOOL mapInitialized;
     USGSRect currentMapRect;
     
-    NSMutableArray *viewModel;
+//    NSMutableArray *viewModel;
 
     NSMutableArray *currentOverlays;
-    
-    NSMutableDictionary *qdiForOverlay;
+    NSMutableArray *currentQuakeDataItems;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *theMap;
@@ -57,6 +56,7 @@
         MKCoordinateSpan mapSpan = MKCoordinateSpanMake(h, w);
         MKCoordinateRegion mapRegion = MKCoordinateRegionMake(centerCoord, mapSpan);
         [self.theMap setRegion:mapRegion animated:YES];
+        [quakeManager fetchQuakeDataFromServer];
         mapInitialized = YES;
     }
 }
@@ -64,6 +64,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)refreshTouched:(id)sender {
+    [quakeManager fetchQuakeDataFromServer];
 }
 
 //- (UIColor *)colorForMagnitude:(double)magnitude {
@@ -104,17 +108,11 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
 }
 
 - (void)updateDisplayWithQuakeData:(NSArray *)quakeData {
-    if (viewModel == nil) {
-        viewModel = [[NSMutableArray alloc] init];
+    if (currentQuakeDataItems == nil) {
+        currentQuakeDataItems = [[NSMutableArray alloc] init];
     }
     else {
-        [viewModel removeAllObjects];
-    }
-    if (qdiForOverlay == nil) {
-        qdiForOverlay = [[NSMutableDictionary alloc] init];
-    }
-    else {
-        [qdiForOverlay removeAllObjects];
+        [currentQuakeDataItems removeAllObjects];
     }
     // remove any existing overlays
     if (currentOverlays == nil) {
@@ -126,26 +124,38 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
     }
     
     for (QuakeDataItem *qdi in quakeData) {
-//        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(qdi.latitude, qdi.longitude);
-        MKCircle *c = [MKCircle circleWithCenterCoordinate:qdi.coordinate radius:qdi.magnitude * 10000.0];
+        [currentQuakeDataItems addObject:qdi];
+        
+        MKCircle *c = [MKCircle circleWithCenterCoordinate:qdi.coordinate radius:qdi.magnitude * 10000.0]; // circle size dependent on strength of quake: 10km/unit magnitude
         [currentOverlays addObject:c];
-        [viewModel addObject:@{ @"qdi": qdi, @"overlay": c }];
-//        qdiForOverlay[c] = qdi;
     }
     
-    
     [self.theMap addOverlays:currentOverlays];
+}
+
+- (QuakeDataItem *)qdiForOverlay:(id <MKOverlay>)overlay {
+    QuakeDataItem *result = nil;
+    for (NSUInteger i = 0; i < currentOverlays.count; i++) {
+        if (currentOverlays[i] == overlay) {
+            result = currentQuakeDataItems[i];
+            break;
+        }
+    }
+    return result;
 }
 
 #pragma mark - MKMapViewDelegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id <MKOverlay>)overlay {
+    QuakeDataItem *qdi = [self qdiForOverlay:overlay];
     MKCircle *circ = (MKCircle *)overlay;
     MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithCircle:circ];
     float r, g, b;
-    getHeatMapColor((float)(circ.radius/40000.0), &r, &g, &b);
+    // TODO: cap the hottest color at magnitude 8.0 (severe quake)
+    float heatValue = MIN(qdi.magnitude / 8.0, 1.0);
+    getHeatMapColor(heatValue, &r, &g, &b);
+    DDLogDebug(@"Render mag %f quake with heat value %f, RGB=(%f,%f,%f)", qdi.magnitude, (double)heatValue, (double)r, (double)g, (double)g);
     renderer.fillColor = [UIColor colorWithRed:r green:g blue:b alpha:0.50];
-//    renderer.strokeColor = renderer.fillColor;
     renderer.strokeColor = [UIColor blackColor];
     renderer.lineWidth = 0.1;
     
