@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "QuakeDataManager.h"
+#import "QuakeDatesPickerViewController.h"
 
-@interface MainViewController : UIViewController <MKMapViewDelegate, QuakeDataManagerDelegate>
+
+@interface MainViewController : UIViewController <MKMapViewDelegate, QuakeDataManagerDelegate, QuakeDatesPickerDelegate>
 
 
 @end

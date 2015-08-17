@@ -24,9 +24,18 @@
 
     NSMutableArray *currentOverlays;
     NSMutableArray *currentQuakeDataItems;
+    
+    BOOL isPlaying;
+    NSTimer *playLoopTimer;
 }
 
 @property (weak, nonatomic) IBOutlet MKMapView *theMap;
+@property (weak, nonatomic) IBOutlet UIView *activityOverlayView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UISlider *timeSlider;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *startTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *endTimeButton;
 
 @end
 
@@ -38,6 +47,8 @@
     quakeManager = [[QuakeDataManager alloc] initWithDelegate:self];
     // zoom extents
     currentMapRect = [quakeManager initialRect];
+    [self hideActivityOverlay];
+    [self blankDateButtons];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -56,6 +67,7 @@
         MKCoordinateSpan mapSpan = MKCoordinateSpanMake(h, w);
         MKCoordinateRegion mapRegion = MKCoordinateRegionMake(centerCoord, mapSpan);
         [self.theMap setRegion:mapRegion animated:YES];
+        [self showActivityOverlay];
         [quakeManager fetchQuakeDataFromServer];
         mapInitialized = YES;
     }
@@ -66,13 +78,94 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)refreshTouched:(id)sender {
-    [quakeManager fetchQuakeDataFromServer];
+- (IBAction)refreshButtonTouched:(id)sender {
+    [self showActivityOverlay];
+    if (quakeManager.startTime == nil || quakeManager.endTime == nil) {
+        [quakeManager fetchQuakeDataFromServer];
+    }
+    else {
+        [quakeManager fetchQuakeDataFromServerWithStartTime:quakeManager.startTime andEndTime:quakeManager.endTime];
+    }
 }
 
+- (IBAction)settingsButtonTouched:(id)sender {
+}
+
+- (IBAction)timeSliderValueChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    float frac = MIN(1.0, MAX(0.0, slider.value));
+    NSTimeInterval timeInterval = [quakeManager.endTime timeIntervalSinceDate:quakeManager.startTime];
+    NSTimeInterval fracTimeInterval = frac * timeInterval;
+    NSDate *fracDate = [quakeManager.startTime dateByAddingTimeInterval:fracTimeInterval];
+    NSArray *fracQuakes = [quakeManager currentQuakeDataFromStartTime:quakeManager.startTime toEndTime:fracDate];
+    [self updateDisplayWithQuakeData:fracQuakes];
+}
+
+- (IBAction)playButtonTouched:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if (isPlaying) {
+        [playLoopTimer invalidate];
+        [button setImage:[UIImage imageNamed:@"ionicons_ios7_play"] forState:UIControlStateNormal];
+        isPlaying = NO;
+    }
+    else {
+        [button setImage:[UIImage imageNamed:@"ionicons_ios7_pause"] forState:UIControlStateNormal];
+        float startFrac = self.timeSlider.value;
+        if (startFrac >= 0.99) {
+            startFrac = 0.0;
+            self.timeSlider.value = startFrac;
+        }
+        isPlaying = YES;
+        playLoopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/5.0 target:self selector:@selector(playTimerFired:) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)playTimerFired:(NSTimer *)timer {
+    UISlider *slider = self.timeSlider;
+    float frac = MIN(1.0, MAX(0.0, slider.value));
+    NSTimeInterval timeInterval = [quakeManager.endTime timeIntervalSinceDate:quakeManager.startTime];
+    NSTimeInterval fracTimeInterval = frac * timeInterval;
+    NSDate *fracDate = [quakeManager.startTime dateByAddingTimeInterval:fracTimeInterval];
+    NSArray *fracQuakes = [quakeManager currentQuakeDataFromStartTime:quakeManager.startTime toEndTime:fracDate];
+    [self updateDisplayWithQuakeData:fracQuakes];
+    
+    if (frac >= 0.99) {
+        [timer invalidate];
+        [self.playButton setImage:[UIImage imageNamed:@"ionicons_ios7_play"] forState:UIControlStateNormal];
+        isPlaying = NO;
+    }
+    else {
+        frac = MIN(1.0, frac + 0.02);
+        self.timeSlider.value = frac;
+    }
+}
+
+//- (IBAction)startTimeButtonTouched:(id)sender {
+//}
+//
+//- (IBAction)endTimeButtonTouched:(id)sender {
+//}
+//
 //- (UIColor *)colorForMagnitude:(double)magnitude {
 //    
 //}
+
+- (void)showActivityOverlay {
+    [self.activityIndicator startAnimating];
+    [self.activityIndicator setHidden:NO];
+    [self.activityOverlayView setHidden:NO];
+}
+
+- (void)hideActivityOverlay {
+    [self.activityIndicator stopAnimating];
+    [self.activityIndicator setHidden:YES];
+    [self.activityOverlayView setHidden:YES];
+}
+
+- (void)blankDateButtons {
+    [self.startTimeButton setTitle:@" " forState:UIControlStateNormal];
+    [self.endTimeButton setTitle:@" " forState:UIControlStateNormal];
+}
 
 // heat map color code from http://www.andrewnoske.com/wiki/Code_-_heatmaps_and_color_gradients
 void getHeatMapColor(float value, float *red, float *green, float *blue)
@@ -100,11 +193,49 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
     *blue  = (color[idx2][2] - color[idx1][2])*fractBetween + color[idx1][2];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SegueStartDateToDatePicker"] ||
+        [segue.identifier isEqualToString:@"SegueEndDateToDatePicker"]) {
+        QuakeDatesPickerViewController *pickerVC = segue.destinationViewController;
+        pickerVC.delegate = self;
+        pickerVC.startDate = quakeManager.startTime;
+        pickerVC.endDate = quakeManager.endTime;
+    }
+}
+
+#pragma mark - QuakeDatesPickerDelegate
+
+- (void)quakeDatePickingCompletedWithStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate {
+    // fetch new data
+    [self showActivityOverlay];
+    [quakeManager fetchQuakeDataFromServerWithStartTime:startDate andEndTime:endDate];
+}
+
 #pragma mark - QuakeDataManagerDelegate
 
 - (void)quakeDataManager:(QuakeDataManager *)quakeDataManager dataUpdated:(NSArray *)quakeData {
-//    DDLogDebug(@"");
+    
+//    // debug
+//    {
+//        DDLogDebug(@"x");
+//        NSArray *someQuakes = [quakeDataManager currentQuakeDataFromStartTime:quakeDataManager.startTime toEndTime:quakeDataManager.endTime];
+//        DDLogDebug(@"y");
+//        DDLogDebug(@"subset count=%zd", someQuakes.count);
+//    }
+    
+    
+    [self hideActivityOverlay];
+    
+    // update the date buttons
+    [self.startTimeButton setTitle:[self dateButtonTitleFromDate:quakeDataManager.startTime] forState:UIControlStateNormal];
+    [self.endTimeButton setTitle:[self dateButtonTitleFromDate:quakeDataManager.endTime] forState:UIControlStateNormal];
+    
+    // update the map display
     [self updateDisplayWithQuakeData:quakeData];
+}
+
+- (void)quakeDataManager:(QuakeDataManager *)quakeDataManager dataFailedToUpdate:(NSError *)error {
+    [self hideActivityOverlay];
 }
 
 - (void)updateDisplayWithQuakeData:(NSArray *)quakeData {
@@ -133,6 +264,12 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
     [self.theMap addOverlays:currentOverlays];
 }
 
+- (NSString *)dateButtonTitleFromDate:(NSDate *)aDate {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    return [dateFormatter stringFromDate:aDate];
+}
+
 - (QuakeDataItem *)qdiForOverlay:(id <MKOverlay>)overlay {
     QuakeDataItem *result = nil;
     for (NSUInteger i = 0; i < currentOverlays.count; i++) {
@@ -151,10 +288,10 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
     MKCircle *circ = (MKCircle *)overlay;
     MKCircleRenderer *renderer = [[MKCircleRenderer alloc] initWithCircle:circ];
     float r, g, b;
-    // TODO: cap the hottest color at magnitude 8.0 (severe quake)
+    // cap the hottest color at magnitude 8.0 (severe quake)
     float heatValue = MIN(qdi.magnitude / 8.0, 1.0);
     getHeatMapColor(heatValue, &r, &g, &b);
-    DDLogDebug(@"Render mag %f quake with heat value %f, RGB=(%f,%f,%f)", qdi.magnitude, (double)heatValue, (double)r, (double)g, (double)g);
+//    DDLogDebug(@"Render mag %f quake with heat value %f, RGB=(%f,%f,%f)", qdi.magnitude, (double)heatValue, (double)r, (double)g, (double)g);
     renderer.fillColor = [UIColor colorWithRed:r green:g blue:b alpha:0.50];
     renderer.strokeColor = [UIColor blackColor];
     renderer.lineWidth = 0.1;

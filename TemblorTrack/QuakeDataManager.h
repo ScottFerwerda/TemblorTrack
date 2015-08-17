@@ -27,6 +27,7 @@
 @protocol QuakeDataManagerDelegate <NSObject>
 
 - (void)quakeDataManager:(QuakeDataManager *)quakeDataManager dataUpdated:(NSArray *)quakeData;
+- (void)quakeDataManager:(QuakeDataManager *)quakeDataManager dataFailedToUpdate:(NSError *)error;
 
 @end
 
@@ -34,9 +35,16 @@
 
 @property (weak, nonatomic) id<QuakeDataManagerDelegate> delegate;
 
+@property (strong, nonatomic, readonly) NSDate *startTime;
+@property (strong, nonatomic, readonly) NSDate *endTime;
+@property (strong, nonatomic, readonly) NSArray *currentQuakeDataItems;
+
 - (instancetype)initWithDelegate:(id<QuakeDataManagerDelegate>)delegateIn;
 - (USGSRect)initialRect;
 
 - (void)fetchQuakeDataFromServer;
+- (void)fetchQuakeDataFromServerWithStartTime:(NSDate *)startTime andEndTime:(NSDate *)endTime;
+
+- (NSArray *)currentQuakeDataFromStartTime:(NSDate *)startTime toEndTime:(NSDate *)endTime;
 
 @end

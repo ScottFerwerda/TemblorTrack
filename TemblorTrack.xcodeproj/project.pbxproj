@@ -10,6 +10,7 @@
 		24108CD71B6D0BD5003DE701 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24108CD61B6D0BD5003DE701 /* MapKit.framework */; };
 		24108CDA1B6D14B7003DE701 /* USGSDataAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 24108CD91B6D14B7003DE701 /* USGSDataAPIClient.m */; };
 		24108CDD1B6D5DB2003DE701 /* QuakeDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 24108CDC1B6D5DB2003DE701 /* QuakeDataManager.m */; };
+		248292381B82686500648EDF /* QuakeDatesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 248292371B82686500648EDF /* QuakeDatesPickerViewController.m */; };
 		24B89A131B6E92A00017FC4D /* QuakeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B89A121B6E92A00017FC4D /* QuakeEvent.m */; };
 		24DB79C71B74ED82005AA8C6 /* QuakeDataOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DB79C61B74ED82005AA8C6 /* QuakeDataOverlay.m */; };
 		24DB79CA1B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DB79C91B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m */; };
@@ -42,6 +43,8 @@
 		24108CD91B6D14B7003DE701 /* USGSDataAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = USGSDataAPIClient.m; sourceTree = "<group>"; };
 		24108CDB1B6D5DB2003DE701 /* QuakeDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuakeDataManager.h; sourceTree = "<group>"; };
 		24108CDC1B6D5DB2003DE701 /* QuakeDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuakeDataManager.m; sourceTree = "<group>"; };
+		248292361B82686500648EDF /* QuakeDatesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuakeDatesPickerViewController.h; sourceTree = "<group>"; };
+		248292371B82686500648EDF /* QuakeDatesPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuakeDatesPickerViewController.m; sourceTree = "<group>"; };
 		24B89A111B6E92A00017FC4D /* QuakeEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuakeEvent.h; path = ../QuakeEvent.h; sourceTree = "<group>"; };
 		24B89A121B6E92A00017FC4D /* QuakeEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuakeEvent.m; path = ../QuakeEvent.m; sourceTree = "<group>"; };
 		24DB79C51B74ED82005AA8C6 /* QuakeDataOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuakeDataOverlay.h; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 				24108CD81B6D14B7003DE701 /* USGSDataAPIClient.h */,
 				24108CD91B6D14B7003DE701 /* USGSDataAPIClient.m */,
 				24DC8FF01B6853B200EF9F10 /* Supporting Files */,
+				248292361B82686500648EDF /* QuakeDatesPickerViewController.h */,
+				248292371B82686500648EDF /* QuakeDatesPickerViewController.m */,
 			);
 			path = TemblorTrack;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				24DC8FF61B6853B200EF9F10 /* AppDelegate.m in Sources */,
 				24DB79CA1B74EDB4005AA8C6 /* QuakeDataOverlayRenderer.m in Sources */,
 				24108CDD1B6D5DB2003DE701 /* QuakeDataManager.m in Sources */,
+				248292381B82686500648EDF /* QuakeDatesPickerViewController.m in Sources */,
 				24DC8FF91B6853B200EF9F10 /* TemblorTrack.xcdatamodeld in Sources */,
 				24B89A131B6E92A00017FC4D /* QuakeEvent.m in Sources */,
 				24108CDA1B6D14B7003DE701 /* USGSDataAPIClient.m in Sources */,
