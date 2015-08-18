@@ -93,7 +93,11 @@
 }
 
 - (NSArray *)currentQuakeDataFromStartTime:(NSDate *)startTime toEndTime:(NSDate *)endTime {
-    NSPredicate *dateSearchPredicate = [NSPredicate predicateWithFormat:@"(dateStarted >= %@) AND (dateStarted <= %@)", startTime, endTime];
+    NSDate *date1 = [endTime dateByAddingTimeInterval:-(60.0 * 60.0 * 24.0 * 3.0)];
+    if ([startTime compare:date1] == NSOrderedDescending) {
+        date1 = startTime;
+    }
+    NSPredicate *dateSearchPredicate = [NSPredicate predicateWithFormat:@"(dateStarted >= %@) AND (dateStarted <= %@)", date1, endTime];
     return [_currentQuakeDataItems filteredArrayUsingPredicate:dateSearchPredicate];
 }
 
