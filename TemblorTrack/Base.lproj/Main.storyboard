@@ -40,6 +40,49 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="btV-zC-49l"/>
                                 </connections>
                             </mapView>
+                            <view hidden="YES" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSH-ZU-Y1f" userLabel="No Data Overlay View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data is available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2L-mr-iog">
+                                        <rect key="frame" x="225" y="201" width="150" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="EMk-8X-vge"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lj5-8H-sLN">
+                                        <rect key="frame" x="270" y="245" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="DyW-ji-Mhu"/>
+                                            <constraint firstAttribute="width" constant="60" id="F6F-qC-4LG"/>
+                                        </constraints>
+                                        <state key="normal" title="Retry">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="S2L-mr-iog" firstAttribute="top" secondItem="Lj5-8H-sLN" secondAttribute="bottom" constant="235" id="BqH-nO-7OA"/>
+                                    <constraint firstAttribute="centerX" secondItem="S2L-mr-iog" secondAttribute="centerX" id="Dvf-0b-y17"/>
+                                    <constraint firstItem="S2L-mr-iog" firstAttribute="top" secondItem="Lj5-8H-sLN" secondAttribute="bottom" constant="235" id="HQN-YM-N76"/>
+                                    <constraint firstAttribute="centerY" secondItem="S2L-mr-iog" secondAttribute="centerY" constant="32" id="LSZ-zx-24X"/>
+                                    <constraint firstItem="S2L-mr-iog" firstAttribute="top" secondItem="Lj5-8H-sLN" secondAttribute="bottom" constant="235" id="Pus-NV-O53"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="S2L-mr-iog" secondAttribute="trailing" constant="32" id="Rnm-Mf-gEg"/>
+                                    <constraint firstItem="S2L-mr-iog" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hSH-ZU-Y1f" secondAttribute="leading" constant="32" id="eMQ-gr-ipG"/>
+                                    <constraint firstAttribute="centerY" secondItem="Lj5-8H-sLN" secondAttribute="centerY" constant="-16" id="m8m-AL-Wyg"/>
+                                    <constraint firstAttribute="centerX" secondItem="Lj5-8H-sLN" secondAttribute="centerX" id="z3T-CY-9i5"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="BqH-nO-7OA"/>
+                                        <exclude reference="HQN-YM-N76"/>
+                                        <exclude reference="Pus-NV-O53"/>
+                                    </mask>
+                                </variation>
+                            </view>
                             <view hidden="YES" opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQC-6Y-67q" userLabel="Refreshing Overlay View">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,15 +176,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PjS-pg-1tW" firstAttribute="top" secondItem="OkF-1g-v92" secondAttribute="bottom" id="0qW-78-7In"/>
+                            <constraint firstItem="PjS-pg-1tW" firstAttribute="top" secondItem="hSH-ZU-Y1f" secondAttribute="bottom" id="5S8-e1-6gt"/>
                             <constraint firstAttribute="centerY" secondItem="Z6Q-e5-c3b" secondAttribute="centerY" id="5pw-4C-U2b"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PjS-pg-1tW" secondAttribute="bottom" id="5q0-wt-fcJ"/>
                             <constraint firstAttribute="trailing" secondItem="HQC-6Y-67q" secondAttribute="trailing" id="6Cq-Zl-eVF"/>
+                            <constraint firstItem="hSH-ZU-Y1f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9eW-PJ-eqr"/>
                             <constraint firstAttribute="trailing" secondItem="OkF-1g-v92" secondAttribute="trailing" id="Jy2-a6-zy6"/>
+                            <constraint firstAttribute="trailing" secondItem="hSH-ZU-Y1f" secondAttribute="trailing" id="MAY-xL-278"/>
                             <constraint firstItem="OkF-1g-v92" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="OBo-qI-6QE"/>
                             <constraint firstAttribute="trailing" secondItem="PjS-pg-1tW" secondAttribute="trailing" id="Pbx-18-cNc"/>
                             <constraint firstItem="PjS-pg-1tW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SuW-FG-jzm"/>
                             <constraint firstItem="OkF-1g-v92" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Ybq-Ph-33W"/>
                             <constraint firstItem="HQC-6Y-67q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yq6-vz-gBT"/>
+                            <constraint firstItem="hSH-ZU-Y1f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fTl-2x-4zF"/>
                             <constraint firstItem="F6E-fp-eSu" firstAttribute="top" secondItem="OkF-1g-v92" secondAttribute="bottom" id="gFO-9E-Fun"/>
                             <constraint firstItem="HQC-6Y-67q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lgt-s8-7fA"/>
                             <constraint firstItem="OkF-1g-v92" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qHB-tp-5S6"/>

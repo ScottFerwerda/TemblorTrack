@@ -24,6 +24,8 @@ static NSString * const USGSDataAPIBaseURLString = @"http://ehp2-earthquake.wr.u
 }
 
 - (NSURLSessionDataTask *)fetchQuakeDataForRect:(USGSRect)rect withStartTime:(NSDate *)startTime andEndTime:(NSDate *)endTime success:(void (^)(NSURLSessionDataTask *, id))successBlock failure:(void (^)(NSURLSessionDataTask *, NSError *))failureBlock {
+    // we can't wait forever
+    [self.requestSerializer setTimeoutInterval:20.0];
     /*
      query?format=geojson&eventtype=earthquake&starttime=2015-07-20&latitude=35&longitude=-78&maxradiuskm=3000
      */
@@ -45,6 +47,7 @@ static NSString * const USGSDataAPIBaseURLString = @"http://ehp2-earthquake.wr.u
     }
     params[@"orderby"] = @"time-asc";
     
+    DDLogDebug(@"performing HTTP GET request to %@ with parameters %@", queryUrl, params);
     return [self GET:queryUrl parameters:params success:successBlock failure:failureBlock];
 }
 

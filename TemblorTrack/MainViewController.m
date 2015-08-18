@@ -79,13 +79,7 @@
 }
 
 - (IBAction)refreshButtonTouched:(id)sender {
-    [self showActivityOverlay];
-    if (quakeManager.startTime == nil || quakeManager.endTime == nil) {
-        [quakeManager fetchQuakeDataFromServer];
-    }
-    else {
-        [quakeManager fetchQuakeDataFromServerWithStartTime:quakeManager.startTime andEndTime:quakeManager.endTime];
-    }
+    [self fetchQuakeDataFromServer];
 }
 
 - (IBAction)settingsButtonTouched:(id)sender {
@@ -236,6 +230,36 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
 
 - (void)quakeDataManager:(QuakeDataManager *)quakeDataManager dataFailedToUpdate:(NSError *)error {
     [self hideActivityOverlay];
+    NSString *errMsg = nil;
+    if (error != nil) {
+        errMsg = [NSString stringWithFormat:@"Error retrieving earthquake data from the USGS servers.\n\n%@\n\n(Code %zd)", error.localizedDescription, error.code];
+    }
+    else {
+        errMsg = @"Oops! Something went wrong.";
+    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:errMsg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        //
+    }];
+    [alert addAction:cancelAction];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self fetchQuakeDataFromServer];
+    }];
+    [alert addAction:retryAction];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        //
+    }];
+}
+
+- (void)fetchQuakeDataFromServer {
+    [self showActivityOverlay];
+    if (quakeManager.startTime == nil || quakeManager.endTime == nil) {
+        [quakeManager fetchQuakeDataFromServer];
+    }
+    else {
+        [quakeManager fetchQuakeDataFromServerWithStartTime:quakeManager.startTime andEndTime:quakeManager.endTime];
+    }
 }
 
 - (void)updateDisplayWithQuakeData:(NSArray *)quakeData {
