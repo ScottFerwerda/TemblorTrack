@@ -17,8 +17,6 @@
 @property (nonatomic, strong) NSString *usgsId;
 @property (nonatomic, strong) NSDate *dateStarted;
 @property (nonatomic, assign) double magnitude;
-//@property (nonatomic, assign) double latitude;
-//@property (nonatomic, assign) double longitude;
 @property(nonatomic, assign) CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) NSString *place;
 
