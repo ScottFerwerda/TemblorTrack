@@ -40,6 +40,7 @@
 - (instancetype)initWithDelegate:(id<QuakeDataManagerDelegate>)delegateIn;
 - (USGSRect)initialRect;
 
+- (void)clearManager;
 - (void)fetchQuakeDataFromServer;
 - (void)fetchQuakeDataFromServerWithStartTime:(NSDate *)startTime andEndTime:(NSDate *)endTime;
 

@@ -28,10 +28,12 @@
 @property (weak, nonatomic) IBOutlet MKMapView *theMap;
 @property (weak, nonatomic) IBOutlet UIView *activityOverlayView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIView *noDataOverlayView;
 @property (weak, nonatomic) IBOutlet UISlider *timeSlider;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (weak, nonatomic) IBOutlet UIButton *startTimeButton;
 @property (weak, nonatomic) IBOutlet UIButton *endTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 @end
 
@@ -74,11 +76,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)refreshButtonTouched:(id)sender {
+- (IBAction)resetButtonTouched:(id)sender {
+    [quakeManager clearManager];
     [self fetchQuakeDataFromServer];
 }
 
-- (IBAction)settingsButtonTouched:(id)sender {
+- (IBAction)refreshButtonTouched:(id)sender {
+    [self fetchQuakeDataFromServer];
 }
 
 - (IBAction)timeSliderValueChanged:(id)sender {
@@ -130,16 +134,6 @@
     }
 }
 
-//- (IBAction)startTimeButtonTouched:(id)sender {
-//}
-//
-//- (IBAction)endTimeButtonTouched:(id)sender {
-//}
-//
-//- (UIColor *)colorForMagnitude:(double)magnitude {
-//    
-//}
-
 - (void)showActivityOverlay {
     [self.activityIndicator startAnimating];
     [self.activityIndicator setHidden:NO];
@@ -150,6 +144,37 @@
     [self.activityIndicator stopAnimating];
     [self.activityIndicator setHidden:YES];
     [self.activityOverlayView setHidden:YES];
+}
+
+- (void)updateDisplayWithQuakeData:(NSArray *)quakeData {
+    if (currentQuakeDataItems == nil) {
+        currentQuakeDataItems = [[NSMutableArray alloc] init];
+    }
+    else {
+        [currentQuakeDataItems removeAllObjects];
+    }
+    // remove any existing overlays
+    if (currentOverlays == nil) {
+        currentOverlays = [[NSMutableArray alloc] init];
+    }
+    else {
+        [self.theMap removeOverlays:currentOverlays];
+        [currentOverlays removeAllObjects];
+    }
+    
+    if (isPlaying == YES || quakeData.count > 0) {
+        self.noDataOverlayView.hidden = YES;
+        for (QuakeDataItem *qdi in quakeData) {
+            [currentQuakeDataItems addObject:qdi];
+            
+            MKCircle *c = [MKCircle circleWithCenterCoordinate:qdi.coordinate radius:qdi.magnitude * 10000.0]; // circle size dependent on strength of quake: 10km/unit magnitude
+            [currentOverlays addObject:c];
+        }
+        [self.theMap addOverlays:currentOverlays];
+    }
+    else {
+        self.noDataOverlayView.hidden = NO;
+    }
 }
 
 - (void)blankDateButtons {
@@ -256,32 +281,6 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
     else {
         [quakeManager fetchQuakeDataFromServerWithStartTime:quakeManager.startTime andEndTime:quakeManager.endTime];
     }
-}
-
-- (void)updateDisplayWithQuakeData:(NSArray *)quakeData {
-    if (currentQuakeDataItems == nil) {
-        currentQuakeDataItems = [[NSMutableArray alloc] init];
-    }
-    else {
-        [currentQuakeDataItems removeAllObjects];
-    }
-    // remove any existing overlays
-    if (currentOverlays == nil) {
-        currentOverlays = [[NSMutableArray alloc] init];
-    }
-    else {
-        [self.theMap removeOverlays:currentOverlays];
-        [currentOverlays removeAllObjects];
-    }
-    
-    for (QuakeDataItem *qdi in quakeData) {
-        [currentQuakeDataItems addObject:qdi];
-        
-        MKCircle *c = [MKCircle circleWithCenterCoordinate:qdi.coordinate radius:qdi.magnitude * 10000.0]; // circle size dependent on strength of quake: 10km/unit magnitude
-        [currentOverlays addObject:c];
-    }
-    
-    [self.theMap addOverlays:currentOverlays];
 }
 
 - (NSString *)dateButtonTitleFromDate:(NSDate *)aDate {

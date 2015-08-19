@@ -46,6 +46,12 @@
     return self;
 }
 
+- (void)clearManager {
+    _startTime = nil;
+    _endTime = nil;
+    _currentQuakeDataItems = nil;
+}
+
 - (void)fetchQuakeDataFromServerWithStartTime:(NSDate *)startTime andEndTime:(NSDate *)endTime {
     dataTask = [[USGSDataAPIClient sharedClient] fetchQuakeDataForRect:[self initialRect] withStartTime:startTime andEndTime:endTime success:^(NSURLSessionDataTask *sessionDataTask, id responseObject) {
         // extract "features" json list
