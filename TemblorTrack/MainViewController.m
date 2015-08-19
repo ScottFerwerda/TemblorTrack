@@ -162,7 +162,7 @@
         [currentOverlays removeAllObjects];
     }
     
-    if (isPlaying == YES || quakeData.count > 0) {
+    if (isPlaying == YES || self.timeSlider.value <= 0.99 || quakeData.count > 0) {
         self.noDataOverlayView.hidden = YES;
         for (QuakeDataItem *qdi in quakeData) {
             [currentQuakeDataItems addObject:qdi];
