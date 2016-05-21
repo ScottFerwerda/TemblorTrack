@@ -18,7 +18,8 @@
 		24DC90011B6853B200EF9F10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24DC90001B6853B200EF9F10 /* Images.xcassets */; };
 		24DC90041B6853B200EF9F10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24DC90021B6853B200EF9F10 /* LaunchScreen.xib */; };
 		24DC90101B6853B200EF9F10 /* TemblorTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DC900F1B6853B200EF9F10 /* TemblorTrackTests.m */; };
-		B9F50D58B3A8B97F33236988 /* libPods-TemblorTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B03D20B5463362593C5811 /* libPods-TemblorTrack.a */; };
+		4229BE3BF675B829DBDE80BB /* libPods-TemblorTrackTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD52E2C7FED98DAB4219F228 /* libPods-TemblorTrackTests.a */; };
+		4EE9754CC9A0806535F2463E /* libPods-TemblorTrack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 64DA28CFE00B3826BCA6D7D4 /* libPods-TemblorTrack.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +55,12 @@
 		24DC90091B6853B200EF9F10 /* TemblorTrackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TemblorTrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		24DC900E1B6853B200EF9F10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24DC900F1B6853B200EF9F10 /* TemblorTrackTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TemblorTrackTests.m; sourceTree = "<group>"; };
-		4B79523B32D6E6267E88007D /* Pods-TemblorTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack.release.xcconfig"; sourceTree = "<group>"; };
-		A6B03D20B5463362593C5811 /* libPods-TemblorTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TemblorTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C2408126B02BB2E29325CFFD /* Pods-TemblorTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack.debug.xcconfig"; sourceTree = "<group>"; };
+		44D91090BAB2B6F756FA84AF /* Pods-TemblorTrackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrackTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrackTests/Pods-TemblorTrackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		64DA28CFE00B3826BCA6D7D4 /* libPods-TemblorTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TemblorTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88DF9DE48D20D73CF517E7A9 /* Pods-TemblorTrackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrackTests/Pods-TemblorTrackTests.release.xcconfig"; sourceTree = "<group>"; };
+		99AE11FE6FADB5E70DCA1E87 /* Pods-TemblorTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack.debug.xcconfig"; sourceTree = "<group>"; };
+		EF6B619AEB9595F94A96A636 /* Pods-TemblorTrack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TemblorTrack.release.xcconfig"; path = "Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack.release.xcconfig"; sourceTree = "<group>"; };
+		FD52E2C7FED98DAB4219F228 /* libPods-TemblorTrackTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TemblorTrackTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24108CD71B6D0BD5003DE701 /* MapKit.framework in Frameworks */,
-				B9F50D58B3A8B97F33236988 /* libPods-TemblorTrack.a in Frameworks */,
+				4EE9754CC9A0806535F2463E /* libPods-TemblorTrack.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,17 +77,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4229BE3BF675B829DBDE80BB /* libPods-TemblorTrackTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		14E4D2839C61FD589FCB97F2 /* Pods */ = {
+		1EAD0B50B8EFE6E5933DD16C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C2408126B02BB2E29325CFFD /* Pods-TemblorTrack.debug.xcconfig */,
-				4B79523B32D6E6267E88007D /* Pods-TemblorTrack.release.xcconfig */,
+				99AE11FE6FADB5E70DCA1E87 /* Pods-TemblorTrack.debug.xcconfig */,
+				EF6B619AEB9595F94A96A636 /* Pods-TemblorTrack.release.xcconfig */,
+				44D91090BAB2B6F756FA84AF /* Pods-TemblorTrackTests.debug.xcconfig */,
+				88DF9DE48D20D73CF517E7A9 /* Pods-TemblorTrackTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -94,8 +101,8 @@
 				24DC8FEF1B6853B200EF9F10 /* TemblorTrack */,
 				24DC900C1B6853B200EF9F10 /* TemblorTrackTests */,
 				24DC8FEE1B6853B200EF9F10 /* Products */,
-				14E4D2839C61FD589FCB97F2 /* Pods */,
 				323FE1BE9DEDC5B1D7ED6D07 /* Frameworks */,
+				1EAD0B50B8EFE6E5933DD16C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,7 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				24108CD61B6D0BD5003DE701 /* MapKit.framework */,
-				A6B03D20B5463362593C5811 /* libPods-TemblorTrack.a */,
+				64DA28CFE00B3826BCA6D7D4 /* libPods-TemblorTrack.a */,
+				FD52E2C7FED98DAB4219F228 /* libPods-TemblorTrackTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -173,11 +181,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24DC90131B6853B200EF9F10 /* Build configuration list for PBXNativeTarget "TemblorTrack" */;
 			buildPhases = (
-				6947871E63AFA9D97F87C5E2 /* Check Pods Manifest.lock */,
+				69FEEC4E08A041D1D5C45027 /* 📦 Check Pods Manifest.lock */,
 				24DC8FE91B6853B200EF9F10 /* Sources */,
 				24DC8FEA1B6853B200EF9F10 /* Frameworks */,
 				24DC8FEB1B6853B200EF9F10 /* Resources */,
-				96CF97AA5ACC2734214A6837 /* Copy Pods Resources */,
+				A5F481AF5536AFC4FA76B945 /* 📦 Embed Pods Frameworks */,
+				4FF78DC1AB93F18AADA08EBB /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24DC90161B6853B200EF9F10 /* Build configuration list for PBXNativeTarget "TemblorTrackTests" */;
 			buildPhases = (
+				D5622FE132388B9E486DBA72 /* 📦 Check Pods Manifest.lock */,
 				24DC90051B6853B200EF9F10 /* Sources */,
 				24DC90061B6853B200EF9F10 /* Frameworks */,
 				24DC90071B6853B200EF9F10 /* Resources */,
+				8EA7FE0C7DFAE91F74A1E0F1 /* 📦 Embed Pods Frameworks */,
+				9E8A7107BA9509BB048FB66D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -217,6 +229,7 @@
 				TargetAttributes = {
 					24DC8FEC1B6853B200EF9F10 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 8EK2SQ875N;
 					};
 					24DC90081B6853B200EF9F10 = {
 						CreatedOnToolsVersion = 6.4;
@@ -264,14 +277,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6947871E63AFA9D97F87C5E2 /* Check Pods Manifest.lock */ = {
+		4FF78DC1AB93F18AADA08EBB /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69FEEC4E08A041D1D5C45027 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,19 +307,64 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		96CF97AA5ACC2734214A6837 /* Copy Pods Resources */ = {
+		8EA7FE0C7DFAE91F74A1E0F1 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TemblorTrackTests/Pods-TemblorTrackTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E8A7107BA9509BB048FB66D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TemblorTrackTests/Pods-TemblorTrackTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5F481AF5536AFC4FA76B945 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TemblorTrack/Pods-TemblorTrack-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5622FE132388B9E486DBA72 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -432,30 +505,37 @@
 		};
 		24DC90141B6853B200EF9F10 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2408126B02BB2E29325CFFD /* Pods-TemblorTrack.debug.xcconfig */;
+			baseConfigurationReference = 99AE11FE6FADB5E70DCA1E87 /* Pods-TemblorTrack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = TemblorTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		24DC90151B6853B200EF9F10 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B79523B32D6E6267E88007D /* Pods-TemblorTrack.release.xcconfig */;
+			baseConfigurationReference = EF6B619AEB9595F94A96A636 /* Pods-TemblorTrack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = TemblorTrack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
 		24DC90171B6853B200EF9F10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44D91090BAB2B6F756FA84AF /* Pods-TemblorTrackTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -475,6 +555,7 @@
 		};
 		24DC90181B6853B200EF9F10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88DF9DE48D20D73CF517E7A9 /* Pods-TemblorTrackTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

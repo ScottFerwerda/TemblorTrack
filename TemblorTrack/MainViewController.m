@@ -16,10 +16,11 @@
     BOOL mapInitialized;
     USGSRect currentMapRect;
     
-//    NSMutableArray *viewModel;
-
     NSMutableArray *currentOverlays;
+    NSMutableArray *currentAnnotations;
     NSMutableArray *currentQuakeDataItems;
+    
+    BOOL annotationStyleCircles;
     
     BOOL isPlaying;
     NSTimer *playLoopTimer;
@@ -74,6 +75,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)annotationStyleButtonTouched:(id)sender {
+    annotationStyleCircles = !annotationStyleCircles;
+    [self refreshMapAnnotations];
 }
 
 - (IBAction)resetButtonTouched:(id)sender {
@@ -153,27 +158,53 @@
     else {
         [currentQuakeDataItems removeAllObjects];
     }
-    // remove any existing overlays
-    if (currentOverlays == nil) {
-        currentOverlays = [[NSMutableArray alloc] init];
-    }
-    else {
-        [self.theMap removeOverlays:currentOverlays];
-        [currentOverlays removeAllObjects];
-    }
     
     if (isPlaying == YES || self.timeSlider.value <= 0.99 || quakeData.count > 0) {
         self.noDataOverlayView.hidden = YES;
-        for (QuakeDataItem *qdi in quakeData) {
-            [currentQuakeDataItems addObject:qdi];
-            
+//        for (QuakeDataItem *qdi in quakeData) {
+//            [currentQuakeDataItems addObject:qdi];
+//        }
+        [currentQuakeDataItems addObjectsFromArray:quakeData];
+        [self refreshMapAnnotations];
+    }
+    else {
+        self.noDataOverlayView.hidden = NO;
+    }
+}
+
+- (void)refreshMapAnnotations
+{
+    // remove any existing overlays
+    if (currentOverlays != nil) {
+        [self.theMap removeOverlays:currentOverlays];
+        [currentOverlays removeAllObjects];
+    }
+    if (currentAnnotations != nil) {
+        [self.theMap removeAnnotations:currentAnnotations];
+        [currentAnnotations removeAllObjects];
+    }
+    
+    // build what is needed for display
+    if (annotationStyleCircles) {
+        if (currentOverlays == nil) currentOverlays = [[NSMutableArray alloc] init];
+        for (QuakeDataItem *qdi in currentQuakeDataItems) {
             MKCircle *c = [MKCircle circleWithCenterCoordinate:qdi.coordinate radius:qdi.magnitude * 10000.0]; // circle size dependent on strength of quake: 10km/unit magnitude
             [currentOverlays addObject:c];
         }
         [self.theMap addOverlays:currentOverlays];
     }
     else {
-        self.noDataOverlayView.hidden = NO;
+        if (currentAnnotations == nil) currentAnnotations = [[NSMutableArray alloc] init];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy 'at' HH:mm"];
+        for (QuakeDataItem *qdi in currentQuakeDataItems) {
+            MKPointAnnotation *p = [[MKPointAnnotation alloc] init];
+            p.coordinate = qdi.coordinate;
+            p.title = [dateFormatter stringFromDate:qdi.dateStarted];
+            p.subtitle = [NSString stringWithFormat:@"Magnitude %.1f at %@", qdi.magnitude, qdi.place];
+            [currentAnnotations addObject:p];
+        }
+        [self.theMap addAnnotations:currentAnnotations];
     }
 }
 
@@ -194,7 +225,7 @@ void getHeatMapColor(float value, float *red, float *green, float *blue)
     float fractBetween = 0;  // Fraction between "idx1" and "idx2" where our value is.
     
     if(value <= 0)      {  idx1 = idx2 = 0;            }    // accounts for an input <=0
-    else if(value >= 1)  {  idx1 = idx2 = NUM_COLORS-1; }    // accounts for an input >=0
+    else if(value >= 1)  {  idx1 = idx2 = NUM_COLORS-1; }    // accounts for an input >=1
     else
     {
         value = value * (NUM_COLORS-1);        // Will multiply value by 3.

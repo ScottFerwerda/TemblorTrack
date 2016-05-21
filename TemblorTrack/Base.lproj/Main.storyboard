@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Ze-7d-eLz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9Ze-7d-eLz">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -47,7 +49,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data is available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2L-mr-iog">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No data is available" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S2L-mr-iog">
                                         <rect key="frame" x="225" y="201" width="150" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="EMk-8X-vge"/>
@@ -217,11 +219,18 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="TemblorTrack" id="4aH-L4-Txf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ZFE-gP-Ge7">
-                            <connections>
-                                <action selector="refreshButtonTouched:" destination="BYZ-38-t0r" id="zcS-8U-mrv"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="ZFE-gP-Ge7">
+                                <connections>
+                                    <action selector="refreshButtonTouched:" destination="BYZ-38-t0r" id="zcS-8U-mrv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Pins/Circles" id="QUm-gT-szC">
+                                <connections>
+                                    <action selector="annotationStyleButtonTouched:" destination="BYZ-38-t0r" id="uKl-qO-fbh"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="Z6Q-e5-c3b" id="jez-VK-Nzk"/>
@@ -251,7 +260,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="oDJ-lY-71Y">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="oDJ-lY-71Y">
                                 <rect key="frame" x="16" y="64" width="568" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="461531326.51847899">
                                     <!--2015-08-17 19:08:46 +0000-->
@@ -292,7 +301,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="L2w-qv-O9k">
+                            <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="L2w-qv-O9k">
                                 <rect key="frame" x="16" y="64" width="568" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="461531326.51847899">
                                     <!--2015-08-17 19:08:46 +0000-->
